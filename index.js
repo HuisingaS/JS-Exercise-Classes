@@ -96,7 +96,6 @@ class Car {
       this.tank -= distance/this.milesPerGallon;
       return `You have driven a total of ${distance} miles`
     }else{
-     let distanceLeft = distance-(this.tank*this.milesPerGallon);
      let distanceTravelled = this.tank*this.milesPerGallon;
      this.tank = 0;
      this.odometer += distanceTravelled;
@@ -183,7 +182,26 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
+class Student extends Lambdasian{
+  constructor(object){
+    super(object);
+    this.previousBackground = object.previousBackground;
+    this.className = object.className;
+    this.favSubjects = object.favSubjects;
+  };
 
+  listSubjects(){
+    return `Loving ${this.favSubjects.join()}`  
+  };
+  
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`
+  };
+
+  sprintChallenge(subject){
+    return `${this.name} has begun sprint challenge on ${subject}`
+  };
+};
 
 
 
@@ -201,6 +219,21 @@ class Instructor extends Lambdasian {
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
+class ProjectManager extends Instructor {
+  constructor(object){
+    super(object);
+    this.gradClassName = object.gradClassName;
+    this.favInstructor = object.favInstructor;
+  };
+
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
+  };
+
+  debugsCode(object,subject){
+    return `${this.name} debugs ${object.name}'s code on ${subject}`
+  };
+};
 
 
 
@@ -217,12 +250,12 @@ class Instructor extends Lambdasian {
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
-  module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
-  if (Instructor) { module.exports.Instructor = Instructor }
-  // if (Student) { module.exports.Student = Student }
-  // if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
-}
+  module.exports = module.exports || {};
+  if (Airplane) { module.exports.Airplane = Airplane };
+  if (Person) { module.exports.Person = Person };
+  if (Car) { module.exports.Car = Car };
+  if (Lambdasian) { module.exports.Lambdasian = Lambdasian };
+  if (Instructor) { module.exports.Instructor = Instructor };
+  if (Student) { module.exports.Student = Student };
+  if (ProjectManager) { module.exports.ProjectManager = ProjectManager };
+};
