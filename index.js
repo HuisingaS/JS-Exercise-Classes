@@ -1,4 +1,4 @@
-/*
+	/*
   EXAMPLE TASK:
     - Write an Airplane class whose constructor initializes `name` from an argument.
     - All airplanes built with Airplane should initialize with an `isFlying` property of false.
@@ -12,14 +12,14 @@ class Airplane {
   constructor(name) {
     this.name = name;
     this.isFlying = false;
-  }
+  };
   takeOff() {
     this.isFlying = true;
-  }
+  };
   land() {
     this.isFlying = false;
-  }
-}
+  };
+};
 
 /*
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -44,12 +44,12 @@ class Person {
   constructor(name,age){
     this.name = name;
     this.age = age;
-    this.stomach = [];
+    this.stomach = []
   };
 
   eat(edible){
     if(this.stomach.length<10){
-      this.stomach.push(edible)
+      this.stomach.push(edible);
     };
   };
 
@@ -99,7 +99,7 @@ class Car {
      let distanceLeft = distance-(this.tank*this.milesPerGallon);
      let distanceTravelled = this.tank*this.milesPerGallon;
      this.tank = 0;
-     this.odometer += distanceTravelled;  
+     this.odometer += distanceTravelled;
      return `"I ran out of fuel at ${this.odometer} miles!"`;
   };
  };
@@ -119,9 +119,19 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
-class Lambdasian {
 
-}
+class Lambdasian {
+  constructor(object){
+    this.name = object.name;
+    this.age = object.age;
+    this.location = object.location;
+  };
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  };
+};
+
+
 
 /*
   TASK 4
@@ -137,9 +147,25 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
 
-}
+class Instructor extends Lambdasian {
+  constructor(object){
+    super(object);
+    this.specialty = object.specialty;
+    this.favLanguage = object.favLanguage;
+    this.catchPhrase = object.catchPhrase;
+  };
+
+  demo(subject){
+    return `Today we are learning about ${subject}`
+  };
+
+  grade(student,subject){
+   return `${student.name} receives a perfect score on ${subject}`
+  };
+};
+
+
 
 /*
   TASK 5
@@ -156,9 +182,10 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
 
-}
+
+
+
 
 /*
   TASK 6
@@ -173,9 +200,9 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
 
-}
+
+
 
 /*
   STRETCH PROBLEM (no tests!)
@@ -196,6 +223,6 @@ if (typeof exports !== 'undefined') {
   if (Car) { module.exports.Car = Car }
   if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
   if (Instructor) { module.exports.Instructor = Instructor }
-  if (Student) { module.exports.Student = Student }
-  if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
+  // if (Student) { module.exports.Student = Student }
+  // if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
 }
